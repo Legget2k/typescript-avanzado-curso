@@ -1,11 +1,10 @@
 import express from 'express';
 import cors from 'cors';
-import { connectDB } from './config/mongoConnection.js';
+import { Note } from './models/noteModel.js';
 
 const app = express();
 app.use(cors());
-
-connectDB();
+app.use(express.json());
 
 app.post("/api/notes", async (req, res) => {
     try {
@@ -21,4 +20,4 @@ app.post("/api/notes", async (req, res) => {
     }
 });
 
-export { app };  
+export { app };

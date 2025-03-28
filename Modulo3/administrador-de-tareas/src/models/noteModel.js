@@ -1,5 +1,5 @@
 //la declaracon del esquema o modelo de una nota para mongoDB
-import { Mongoose, version } from "mongoose";
+import Mongoose from "mongoose";
 
 const noteSchema = new Mongoose.Schema({
     title: { type: String, required: true },
