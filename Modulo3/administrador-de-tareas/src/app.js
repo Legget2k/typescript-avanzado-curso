@@ -1,23 +1,13 @@
 import express from 'express';
 import cors from 'cors';
-import { Note } from './models/noteModel.js';
+import { NotesRouter } from './routes/notesRoutes.js';
+import { errorHandler } from './middleware/errorHandler.js';
 
 const app = express();
 app.use(cors());
 app.use(express.json());
 
-app.post("/api/notes", async (req, res) => {
-    try {
-        const {text} = req.body;
-        const newNote = new Note({
-            title: text
-        });
-        const savedNote = await newNote.save();
-        res.status(201).json(savedNote);
-    }catch (error) {
-        console.log(error);
-        res.status(500).send(error);
-    }
-});
+app.use("/api/notes", NotesRouter);
+app.use(errorHandler);
 
 export { app };
