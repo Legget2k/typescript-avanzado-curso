@@ -11,7 +11,7 @@ const NotesRouter = Router();
 NotesRouter.get("/", getNotes);
 NotesRouter.get("/:id", getNotesById);
 NotesRouter.patch("/:id", updateNotes); // put -- patch -> put: actualiza todo el objeto, patch: actualiza solo una parte del objeto
-NotesRouter.post("/:id", deleteNotes);
+NotesRouter.delete("/:id", deleteNotes);
 
 NotesRouter.post("/", createNotes);
 

@@ -17,7 +17,7 @@ export const createNotes = async (req, res) => {
 
 export const getNotes = async (req, res, next) => {try {
     const notes = await Note.find();
-    notes.json(notes);
+    res.json(notes);
 } catch (error) {
     next(error);
 }}
