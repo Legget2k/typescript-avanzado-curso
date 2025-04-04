@@ -2,7 +2,7 @@
 import Mongoose from "mongoose";
 
 const noteSchema = new Mongoose.Schema({
-    title: { type: String, required: true },
+    text: { type: String, required: true },
     done: { type: Boolean, default: false }
 }, {timestamps: true,versionKey: false});
 
