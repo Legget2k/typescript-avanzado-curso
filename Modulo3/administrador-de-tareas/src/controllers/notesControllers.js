@@ -2,16 +2,17 @@
 import  Mongoose  from 'mongoose';
 import { Note } from '../models/noteModel.js';
 
-export const createNotes = async (req, res) => {
+export const createNotes = async (req, res, next) => {
     try {
-        const {text} = req.body;
-        const newNote = new Note({
-            title: text
-        });
+        console.log("trying to create a note");
+        const newNoteRaw = req.body;
+        const newNote = new Note(newNoteRaw);
         const savedNote = await newNote.save();
         res.status(201).json(savedNote);
     }catch (error) {
         next(error);
+    }finally{
+        console.log("note created");
     }
 };
 
